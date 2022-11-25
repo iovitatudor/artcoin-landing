@@ -1,26 +1,53 @@
 <template>
   <v-container fluid>
-    <v-app-bar color="black" dark>
+    <v-app-bar class="header" color="black" dark>
       <v-img
         src="@/assets/Logo-white.svg"
-        max-height="10"
-        max-width="50"
+        max-height="50"
+        max-width="30"
       ></v-img>
 
-      <router-link to="#" class="ml-3">About</router-link>
-      <router-link to="#" class="ml-3">Business model</router-link>
-      <router-link to="#" class="ml-3">Team</router-link>
-      <router-link to="#" class="ml-3">Roadmap</router-link>
+      <a to="#" class="menu-item">About</a>
+      <a to="#" class="menu-item">Business model</a>
+      <a to="#" class="menu-item">Team </a>
+      <a to="#" class="menu-item">Roadmap</a>
 
       <v-spacer></v-spacer>
 
-      <v-btn class="ml-3">PitchDeck</v-btn>
-      <v-btn outlined class="ml-3">Connect wallet</v-btn>
+      <a class="menu-item-last">PitchDeck</a>
+      <v-btn class="btn-main">Connect wallet</v-btn>
     </v-app-bar>
   </v-container>
 </template>
 <script>
-import RouterLink from "vue-router";
 export default {};
 </script>
-<style lang=""></style>
+<style lang="scss">
+.btn-main {
+  border-radius: 40px;
+  background-color: $main-red !important;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.menu-item {
+  font-size: 16px;
+  color: #fff !important;
+  margin-left: 40px;
+}
+
+.menu-item-last {
+  font-size: 16px;
+  color: #fff !important;
+  margin-right: 50px;
+}
+
+.v-toolbar__content {
+  width: 1185px;
+  margin: 0 auto;
+}
+
+.container--fluid {
+  padding: 0;
+}
+</style>
