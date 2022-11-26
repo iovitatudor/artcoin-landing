@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <NavBar></NavBar>
-    <HeroSrceenSection></HeroSrceenSection>
-    <HowItWorksSection> </HowItWorksSection>
-    <ServiceSection> </ServiceSection>
+    <NavBar />
+    <HeroSrceenSection />
+    <HowItWorksSection />
+    <ServiceSection />
   </v-app>
 </template>
 

@@ -23,7 +23,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .v-card__title {
   padding-top: 40px;
   color: #fff;

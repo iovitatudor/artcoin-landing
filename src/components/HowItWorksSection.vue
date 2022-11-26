@@ -3,8 +3,11 @@
     <v-container grid-list-md class="my-14">
       <h1 class="h1 text-center">How it works</h1>
       <v-row justify="space-between" align="center" class="mt-16">
-        <HowItWorksCard v-for="step in steps" :key="step" :step="step">
-        </HowItWorksCard>
+        <HowItWorksCard
+          v-for="(step, index) in steps"
+          :key="index"
+          :step="step"
+        />
       </v-row>
     </v-container>
   </v-container>
@@ -47,5 +50,6 @@ export default {
   font-weight: 700;
   color: #fff;
   letter-spacing: 3px;
+  line-height: 1.2em;
 }
 </style>
