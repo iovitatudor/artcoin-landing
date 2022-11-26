@@ -1,11 +1,7 @@
 <template>
   <v-container fluid>
     <v-app-bar class="header" color="black" dark>
-      <v-img
-        src="@/assets/Logo-white.svg"
-        max-height="50"
-        max-width="30"
-      ></v-img>
+      <icon-logo> </icon-logo>
 
       <a to="#" class="menu-item">About</a>
       <a to="#" class="menu-item">Business model</a>
@@ -20,7 +16,8 @@
   </v-container>
 </template>
 <script>
-export default {};
+import IconLogo from "./icons/IconLogo.vue";
+export default { components: { IconLogo } };
 </script>
 <style lang="scss">
 .btn-main {

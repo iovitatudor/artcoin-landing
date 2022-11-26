@@ -1,7 +1,7 @@
 <template>
   <v-img src="@/assets/img/banner.png">
     <v-container grid-list-md>
-      <v-row justify="space-between" align="center">
+      <v-row justify="space-between" align="center" class="mt-16">
         <v-col cols="6">
           <h1 class="name">artcoin</h1>
           <p class="subtitle">
@@ -47,12 +47,7 @@ export default {};
 
 .subsubtitle {
   color: #fff;
-
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
-}
-
-.row {
-  padding-top: 130px;
 }
 </style>

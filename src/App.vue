@@ -1,23 +1,25 @@
 <template>
   <v-app>
-    <nav-bar></nav-bar>
-    <hero-srceen></hero-srceen>
+    <NavBar></NavBar>
+    <HeroSrceenSection></HeroSrceenSection>
+    <HowItWorksSection> </HowItWorksSection>
+    <ServiceSection> </ServiceSection>
   </v-app>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import HeroSrceen from "./components/HeroSrceen.vue";
+import HeroSrceenSection from "@/components/HeroSection.vue";
+import HowItWorksSection from "@/components/HowItWorksSection.vue";
+import ServiceSection from "@/components/ServiceSection.vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
-    HeroSrceen,
+    HeroSrceenSection,
+    HowItWorksSection,
+    ServiceSection,
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
