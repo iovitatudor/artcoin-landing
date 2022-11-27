@@ -13,6 +13,7 @@
           v-for="getService in getServices"
           :key="getService.id"
           :getService="getService"
+          btn-text="Get service"
         />
       </v-row>
     </v-container>

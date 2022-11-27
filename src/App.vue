@@ -4,6 +4,8 @@
     <HeroSrceenSection />
     <HowItWorksSection />
     <ServiceSection />
+    <ProvideServiceSection />
+    BussinessModel
   </v-app>
 </template>
 
@@ -12,6 +14,7 @@ import NavBar from "@/components/NavBar.vue";
 import HeroSrceenSection from "@/components/HeroSection.vue";
 import HowItWorksSection from "@/components/HowItWorksSection.vue";
 import ServiceSection from "@/components/ServiceSection.vue";
+import ProvideServiceSection from "./components/ProvideServiceSection.vue";
 
 export default {
   name: "App",
@@ -20,6 +23,7 @@ export default {
     HeroSrceenSection,
     HowItWorksSection,
     ServiceSection,
+    ProvideServiceSection,
   },
 };
 </script>

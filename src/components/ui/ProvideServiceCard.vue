@@ -6,38 +6,31 @@
           :src="imgUrl"
           alt="service photo"
           class="card-image rounded-xl"
-          height="303"
         />
       </div>
       <div class="glass-top">
         <v-avatar size="34" class="ma-1">
           <img :src="avatarUrl" alt="author logo" />
         </v-avatar>
-        <p class="author ml-1">{{ getService.author }}</p>
+        <p class="author ml-1">{{ provideService.author }}</p>
       </div>
 
       <div class="glass-bottom">
         <p class="price ma-2">Price</p>
         <div class="glass-bottom__number mr-2">
           <IconEth class="mr-1" />
-          <p class="price-number">{{ getService.price }} AC</p>
+          <p class="price-number">{{ provideService.price }} AC</p>
         </div>
       </div>
 
-      <v-card-title class="text-center card-title mt-7 mx-2">
-        {{ getService.title }}
+      <v-card-title class="text-center card-title mt-7">
+        {{ provideService.title }}
       </v-card-title>
-      <v-card-text
-        v-if="getService.description"
-        class="text-center card-description pa-5"
-      >
-        {{ getService.description }}
-      </v-card-text>
 
       <v-card-actions>
         <v-row align="center" justify="space-around">
-          <v-btn rounded color="white" elevation="0" class="btn ma-6">
-            {{ btnText }}
+          <v-btn rounded color="white" elevation="0" class="btn ma-4">
+            Provide Service
           </v-btn>
         </v-row>
       </v-card-actions>
@@ -52,15 +45,14 @@ export default {
     IconEth,
   },
   props: {
-    getService: { type: Object, required: true },
-    btnText: { type: String, required: true },
+    provideService: { type: Object, required: true },
   },
   computed: {
     imgUrl() {
-      return require(`@/assets/img/${this.getService.img}`);
+      return require(`@/assets/img/${this.provideService.img}`);
     },
     avatarUrl() {
-      return require(`@/assets/img/${this.getService.avatar}`);
+      return require(`@/assets/img/${this.provideService.avatar}`);
     },
   },
 };
@@ -75,7 +67,6 @@ export default {
   font-weight: 600;
   font-size: 20px;
   letter-spacing: 0.05em;
-  word-break: normal;
 }
 
 .card-description {
