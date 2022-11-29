@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="3" align-self="center">
+  <v-col md="3" align-self="center">
     <v-card color="#DD1A33" elevation="0" class="get-service" rounded="xl">
       <div class="mt-5">
         <v-img
@@ -29,14 +29,16 @@
       </v-card-title>
       <v-card-text
         v-if="getService.description"
-        class="text-center card-description pa-5"
+        class="text-center card-description pa-3"
       >
-        {{ getService.description }}
+        <p v-for="(description, index) in getService.description" :key="index">
+          {{ description }}
+        </p>
       </v-card-text>
 
       <v-card-actions>
         <v-row align="center" justify="space-around">
-          <v-btn rounded color="white" elevation="0" class="btn ma-6">
+          <v-btn rounded color="white" elevation="0" class="btn my-6">
             {{ btnText }}
           </v-btn>
         </v-row>

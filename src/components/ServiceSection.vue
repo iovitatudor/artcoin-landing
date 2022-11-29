@@ -33,8 +33,11 @@ export default {
         author: "COR",
         price: "700",
         title: "Rent small meeting room",
-        description:
-          "round table – 20 \npeople theater - up to 50 people \n500 lei/hour, minimum 2 hours 2500 lei/day",
+        description: [
+          "round table – 20",
+          "npeople theater - up to 50 people",
+          "n500 lei/hour, minimum 2 hours 2500 lei/day",
+        ],
         img: "service1.png",
         avatar: "Logo-Cor.jpeg",
       },
@@ -43,8 +46,11 @@ export default {
         author: "ArtCor",
         price: "400",
         title: "Rent soundlab room ",
-        description:
-          "Sound recording studio \n120 lei/hour \nHall for concerts/small events/rehearsals 500 lei/hour",
+        description: [
+          "Sound recording studio",
+          "120 lei/hour",
+          "nHall for concerts/small events/rehearsals 500 lei/hour",
+        ],
         img: "service2.png",
         avatar: "Logo-ArtCor.jpeg",
       },
@@ -53,8 +59,11 @@ export default {
         author: "MediaCor",
         price: "2500",
         title: "Rent events room",
-        description:
-          "up to 100 people \ninternet, audio system, 2 microphones, large LED screen \n2,500 lei/hour, minimum 2 hours",
+        description: [
+          "up to 100 people",
+          "internet, audio system, 2 microphones, large LED screen",
+          "2,500 lei/hour, minimum 2 hours",
+        ],
         img: "service3.png",
         avatar: "Logo-MediaCor.png",
       },

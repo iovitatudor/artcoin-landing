@@ -1,8 +1,13 @@
 <template>
   <v-container class="bckg-red" fluid>
-    <v-container grid-list-md class="my-14">
+    <v-container grid-list-md class="my-7">
       <h1 class="h1 text-center">How it works</h1>
-      <v-row justify="space-between" align="center" class="mt-16">
+      <v-row
+        justify-lg="space-between"
+        justify="center"
+        align="center"
+        class="mt-16"
+      >
         <HowItWorksCard
           v-for="(step, index) in steps"
           :key="index"

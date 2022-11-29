@@ -9,3 +9,15 @@
 * {
     font-family: manrope, sans-serif !important;
  }
+
+ @mixin rwdmax($screen) {
+    @media (max-width: $screen+"px") {
+        @content;
+    }
+}
+
+@mixin rwdmin($screen) {
+    @media (min-width: $screen+"px") {
+        @content;
+    }
+}
