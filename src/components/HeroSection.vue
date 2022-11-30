@@ -64,7 +64,9 @@ export default {
   color: rgb(255, 255, 255);
   font-weight: 600;
   letter-spacing: 0.09em;
-  //-webkit-text-stroke: 1px rgb(255, 255, 255);
+  @include rwdmax(500) {
+    font-size: 80px;
+  }
 }
 
 .subtitle {
@@ -77,8 +79,5 @@ export default {
   color: #fff;
   font-size: 18px;
   font-weight: 400;
-}
-
-.hero-img {
 }
 </style>

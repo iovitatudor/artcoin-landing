@@ -2,9 +2,14 @@
   <v-container class="bckg" fluid>
     <v-container grid-list-md class="my-16">
       <h1 class="h1 text-center mb-5">Roadmap</h1>
-      <v-img src="@/assets/img/Roadmap.svg" contain height="250"></v-img>
+      <v-img
+        src="@/assets/img/Roadmap.svg"
+        contain
+        height="250"
+        v-if="width >= 960"
+      ></v-img>
 
-      <v-row>
+      <v-row class="mt-7">
         <RoadmapCard v-for="(step, index) in steps" :key="index" :step="step" />
       </v-row>
     </v-container>
@@ -17,7 +22,13 @@ export default {
   components: {
     RoadmapCard,
   },
+  methods: {
+    updateWidth() {
+      this.width = window.innerWidth;
+    },
+  },
   data: () => ({
+    width: 0,
     steps: [
       {
         date: "2021 - 2022",
@@ -49,6 +60,9 @@ export default {
       },
     ],
   }),
+  created() {
+    window.addEventListener("resize", this.updateWidth);
+  },
 };
 </script>
 <style lang=""></style>

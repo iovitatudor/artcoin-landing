@@ -7,22 +7,29 @@
           src="@/assets/img/suedia-embasy-small.png"
           contain
           height="130"
-          class="mr-3"
+          class="mr-3 mt-5"
         ></v-img>
 
         <v-img
           src="@/assets/img/UISAID-logo-small.png"
           contain
           height="130"
+          class="mt-5"
         ></v-img>
 
         <v-img
           src="@/assets/img/UK-embassy-removebg-preview.png"
           contain
           height="130"
+          class="mt-5"
         ></v-img>
 
-        <v-img src="@/assets/img/ukaid.png" contain height="130"></v-img>
+        <v-img
+          src="@/assets/img/ukaid.png"
+          contain
+          height="130"
+          class="mt-5"
+        ></v-img>
       </v-row>
     </v-container>
   </v-container>

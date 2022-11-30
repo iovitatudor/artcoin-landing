@@ -24,9 +24,9 @@
               ><IconIn /> </a
           ></v-row>
         </v-col>
-        <v-col align-self="center" cols="6">
+        <v-col align-self="center" md="6">
           <v-row>
-            <v-col cols="4">
+            <v-col md="4">
               <ul>
                 <li class="footer__text"><b>About</b></li>
                 <li class="footer__text">
@@ -37,7 +37,7 @@
                 </li>
               </ul>
             </v-col>
-            <v-col cols="3">
+            <v-col md="3">
               <ul>
                 <li class="footer__text"><b>Roadmap</b></li>
                 <li class="footer__text">
@@ -45,7 +45,7 @@
                 </li>
               </ul>
             </v-col>
-            <v-col cols="5">
+            <v-col md="5">
               <ul>
                 <li class="footer__text"><b>Keep in touch</b></li>
                 <li class="footer__text">

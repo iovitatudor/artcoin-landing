@@ -1,22 +1,34 @@
 <template lang="">
-  <v-col cols="3" align-self="center">
-    <v-card
-      color="transparent"
-      elevation="0"
-      class="roadmap mr-3 text-center"
-      height="250"
-    >
-      <v-card-title color="white" class="justify-center pt-5">{{
-        step.date
-      }}</v-card-title>
-      <v-card-text class="text-center">
-        <ul class="pa-4">
-          <li v-for="(text, index) in step.text" :key="index">
-            {{ text }}
-          </li>
-        </ul>
-      </v-card-text>
-    </v-card>
+  <v-col
+    cols="8"
+    md="3"
+    sm="4"
+    offset-sm="1"
+    offset-md="0"
+    offset="2"
+    align-self="center"
+    class="mt-5"
+  >
+    <v-sheet outlined color="black" rounded>
+      <v-card
+        outlined
+        color="transparent"
+        elevation="0"
+        class="roadmap mr-3 text-center"
+        min-height="270"
+      >
+        <v-card-title color="white" class="justify-center pt-5">{{
+          step.date
+        }}</v-card-title>
+        <v-card-text class="text-center">
+          <ul class="pa-4">
+            <li v-for="(text, index) in step.text" :key="index">
+              {{ text }}
+            </li>
+          </ul>
+        </v-card-text>
+      </v-card>
+    </v-sheet>
   </v-col>
 </template>
 <script>

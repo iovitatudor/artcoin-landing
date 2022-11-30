@@ -162,7 +162,7 @@ header {
     }
 
     .navigation {
-      width: 100%;
+      width: 98%;
       display: flex;
       justify-content: space-between;
       align-items: center;

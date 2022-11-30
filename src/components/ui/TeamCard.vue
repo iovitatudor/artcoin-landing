@@ -1,5 +1,5 @@
 <template lang="">
-  <v-col cols="3" align-self="center">
+  <v-col cols="8" md="4" sm="6" align-self="center" class="mt-3">
     <v-card
       color="transparent"
       elevation="0"

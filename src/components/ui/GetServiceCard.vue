@@ -1,5 +1,13 @@
 <template>
-  <v-col md="3" align-self="center">
+  <v-col
+    md="3"
+    sm="6"
+    offset-md="0"
+    offset-sm="3"
+    offset="2"
+    cols="8"
+    align-self="center"
+  >
     <v-card color="#DD1A33" elevation="0" class="get-service" rounded="xl">
       <div class="mt-5">
         <v-img
