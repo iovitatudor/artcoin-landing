@@ -1,15 +1,18 @@
 <template>
   <v-app>
-    <NavBar />
-    <HeroSrceenSection />
-    <HowItWorksSection />
-    <ServiceSection />
-    <ProvideServiceSection />
-    <BusinessModelSection />
-    <PartnersSection />
-    <TeamSection />
-    <RoadmapSection />
-    <FooterSection />
+    <NavBar :contract='contract'
+            :currentUser='currentUser'
+            :nearConfig='nearConfig'
+            :walletConnection='walletConnection'/>
+    <HeroSrceenSection/>
+    <HowItWorksSection/>
+    <ServiceSection/>
+    <ProvideServiceSection/>
+    <BusinessModelSection/>
+    <PartnersSection/>
+    <TeamSection/>
+    <RoadmapSection/>
+    <FooterSection/>
   </v-app>
 </template>
 

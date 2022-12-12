@@ -3,7 +3,7 @@
     <header :class="{ 'scrolled-nav': scrollPosition }">
       <nav>
         <div class="branding">
-          <icon-logo> </icon-logo>
+          <icon-logo></icon-logo>
         </div>
         <div v-show="!mobile" class="navigation">
           <ul class="navigation__list">
@@ -13,7 +13,13 @@
             <li><a to="#" class="menu-item">Roadmap</a></li>
             <li><a class="menu-item">PitchDeck</a></li>
           </ul>
-          <v-btn class="btn-main">Connect wallet</v-btn>
+
+          <v-btn class="btn-main" @click="login" v-if="!currentUser">Connect wallet</v-btn>
+          <div class="account-section" v-else>
+            <span class="account-section-item">{{ artCoinBalance }} ArtCoin</span>
+            <span class="account-section-item">{{ currentUser.accountId }}</span>
+            <v-btn class="btn-main" @click="logout">Logout</v-btn>
+          </div>
         </div>
 
         <div class="icon">
@@ -45,16 +51,31 @@
 <script>
 import IconLogo from "./icons/IconLogo.vue";
 import IconMenu from "./icons/IconMenu.vue";
+
 export default {
   name: "navMenu",
-  components: { IconLogo, IconMenu },
+  props: {
+    contract: Object,
+    currentUser: Object,
+    nearConfig: Object,
+    walletConnection: Object,
+  },
+  components: {IconLogo, IconMenu},
   data: () => ({
     width: 0,
     scrollPosition: null,
     mobile: null,
     mobileNav: null,
+    artCoinBalance: 0,
   }),
   methods: {
+    getCurrentBalance() {
+      this.contract.ft_balance_of(
+        {"account_id": this.currentUser.accountId},
+      ).then(res => {
+        this.artCoinBalance = res
+      })
+    },
     updateWidth() {
       this.width = window.innerWidth;
       if (this.width <= 870) {
@@ -68,8 +89,23 @@ export default {
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
     },
+    login() {
+      this.walletConnection.requestSignIn({
+          contractId: this.nearConfig.contractName,
+          methodNames: [
+            this.contract.ft_transfer.name,
+          ]
+        },
+        'Near vue proto', null, null
+      )
+    },
+    logout() {
+      this.walletConnection.signOut();
+      window.location.replace(window.location.origin + window.location.pathname);
+    },
   },
   created() {
+    this.getCurrentBalance();
     window.addEventListener("resize", this.updateWidth);
   },
 };
@@ -133,6 +169,7 @@ header {
     @media (min-width: 1185px) {
       max-width: 1185px;
     }
+
     ul,
     .link {
       font-weight: 500;
@@ -140,6 +177,7 @@ header {
       list-style: none;
       text-decoration: none;
     }
+
     .link {
       font-size: 18px;
       transition: 0.5s ease all;
@@ -151,6 +189,7 @@ header {
         border-color: $main-red;
       }
     }
+
     .branding {
       display: flex;
       align-items: center;
@@ -224,6 +263,13 @@ header {
         margin-top: 17px;
       }
     }
+  }
+}
+.account-section {
+  .account-section-item {
+    margin: 0 20px 0 10px;
+    display: inline-block;
+    font-weight: 600;
   }
 }
 </style>

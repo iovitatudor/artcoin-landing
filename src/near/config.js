@@ -1,4 +1,4 @@
-const CONTRACT_NAME = process.env.CONTRACT_NAME || 'artcoin.testnet';
+const CONTRACT_NAME = process.env.CONTRACT_NAME || 'doors.testnet';
 
 function getConfig(env) {
   switch (env) {

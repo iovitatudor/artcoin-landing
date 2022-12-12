@@ -2,22 +2,22 @@
 @import "variables.scss";
 
 @font-face {
-    font-family: manrope;
-    src: url(@/fonts/Manrope-VariableFont_wght.ttf);
+  font-family: manrope;
+  src: url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 }
 
 * {
-    font-family: manrope, sans-serif !important;
- }
+  font-family: manrope, sans-serif !important;
+}
 
- @mixin rwdmax($screen) {
-    @media (max-width: $screen+"px") {
-        @content;
-    }
+@mixin rwdmax($screen) {
+  @media (max-width: $screen+"px") {
+    @content;
+  }
 }
 
 @mixin rwdmin($screen) {
-    @media (min-width: $screen+"px") {
-        @content;
-    }
+  @media (min-width: $screen+"px") {
+    @content;
+  }
 }
