@@ -1,10 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+import {initContract} from "@/near/near";
 
 Vue.config.productionTip = false
 
-new Vue({
-  vuetify,
-  render: h => h(App)
-}).$mount('#app')
+window.nearInitPromise = initContract().then(
+  ({
+     contract,
+     currentUser,
+     nearConfig,
+     walletConnection
+   }) => {
+    new Vue({
+      vuetify,
+      render: h => h(App, {props: {contract, currentUser, nearConfig, walletConnection}})
+    }).$mount('#app')
+  }
+);

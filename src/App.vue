@@ -27,6 +27,12 @@ import FooterSection from "./components/FooterSection.vue";
 
 export default {
   name: "App",
+  props: {
+    contract: Object,
+    currentUser: Object,
+    nearConfig: Object,
+    walletConnection: Object,
+  },
   components: {
     NavBar,
     HeroSrceenSection,
