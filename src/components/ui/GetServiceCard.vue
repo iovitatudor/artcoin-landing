@@ -19,7 +19,7 @@
       </div>
       <div class="glass-top">
         <v-avatar size="34" class="ma-1">
-          <img :src="avatarUrl" alt="author logo" />
+          <img :src="avatarUrl" alt="author logo"/>
         </v-avatar>
         <p class="author ml-1">{{ getService.author }}</p>
       </div>
@@ -27,7 +27,7 @@
       <div class="glass-bottom">
         <p class="price ma-2">Price</p>
         <div class="glass-bottom__number mr-2">
-          <IconEth class="mr-1" />
+          <IconEth class="mr-1"/>
           <p class="price-number">{{ getService.price }} AC</p>
         </div>
       </div>
@@ -45,8 +45,11 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-row align="center" justify="space-around">
-          <v-btn rounded color="white" elevation="0" class="btn my-6">
+        <v-row align="center" justify="space-around" class="action-section">
+          <p class="validate-error" v-if="validatorError">
+            You don't have enough funds. Top up your balance.
+          </p>
+          <v-btn rounded color="white" elevation="0" class="btn my-6" @click="transfer(getService.price)">
             {{ btnText }}
           </v-btn>
         </v-row>
@@ -56,15 +59,23 @@
 </template>
 <script>
 import IconEth from "../icons/IconEth.vue";
+import Big from 'big.js';
 
 export default {
   components: {
     IconEth,
   },
   props: {
-    getService: { type: Object, required: true },
-    btnText: { type: String, required: true },
+    getService: {type: Object, required: true},
+    btnText: {type: String, required: true},
+    contract: Object,
+    currentUser: Object,
   },
+  data: () => ({
+    validatorError: false,
+    receiverAccountId: 'cormain.testnet',
+    artCoinBalance: 0,
+  }),
   computed: {
     imgUrl() {
       return require(`@/assets/img/${this.getService.img}`);
@@ -73,12 +84,44 @@ export default {
       return require(`@/assets/img/${this.getService.avatar}`);
     },
   },
+  mounted() {
+    this.getCurrentBalance();
+  },
+  methods: {
+    validate(price) {
+      this.validatorError = parseInt(price) > this.artCoinBalance;
+      setTimeout(() => this.validatorError = false, 3000);
+    },
+    async transfer(price) {
+      this.validate(price);
+      if (!this.validatorError) {
+        const BOATLOAD_OF_GAS = Big(3).times(10 ** 13).toFixed();
+        await this.contract.ft_transfer(
+          {
+            "receiver_id": this.receiverAccountId,
+            "amount": (parseInt(price) * 100000000).toFixed(),
+          },
+          BOATLOAD_OF_GAS,
+          1
+        );
+      }
+    },
+    async getCurrentBalance() {
+      if (this.currentUser) {
+        const result = await this.contract.ft_balance_of(
+          {"account_id": this.currentUser.accountId},
+        );
+        this.artCoinBalance = result / 100000000;
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 .get-service {
   box-sizing: border-box;
 }
+
 .card-title {
   justify-content: center;
   color: #fff;
@@ -134,6 +177,7 @@ export default {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(25px);
   border-radius: 22px;
+
   &__number {
     display: flex;
     margin-bottom: 0;
@@ -153,6 +197,7 @@ export default {
   font-size: 14px;
   font-weight: 700;
 }
+
 .author {
   margin-bottom: 0;
   color: #fff;
@@ -164,5 +209,20 @@ export default {
   color: $main-red;
   font-weight: 600;
   font-size: 16px;
+}
+
+.action-section {
+  position: relative;
+
+  .validate-error {
+    position: absolute;
+    top: -23px;
+    text-align: center;
+    color: $main-red;
+    background-color: #FFF;
+    line-height: 1.1;
+    padding: 7px 36px;
+    font-weight: 600;
+  }
 }
 </style>

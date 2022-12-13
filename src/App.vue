@@ -1,15 +1,19 @@
 <template>
   <v-app>
-    <NavBar />
-    <HeroSrceenSection />
-    <HowItWorksSection />
-    <ServiceSection />
-    <ProvideServiceSection />
-    <BusinessModelSection />
-    <PartnersSection />
-    <TeamSection />
-    <RoadmapSection />
-    <FooterSection />
+    <NavBar :contract='contract'
+            :currentUser='currentUser'
+            :nearConfig='nearConfig'
+            :walletConnection='walletConnection'/>
+    <HeroSrceenSection/>
+    <HowItWorksSection/>
+    <ServiceSection :contract='contract'
+                    :currentUser='currentUser'/>
+    <ProvideServiceSection/>
+    <BusinessModelSection/>
+    <PartnersSection/>
+    <TeamSection/>
+    <RoadmapSection/>
+    <FooterSection/>
   </v-app>
 </template>
 
@@ -27,6 +31,12 @@ import FooterSection from "./components/FooterSection.vue";
 
 export default {
   name: "App",
+  props: {
+    contract: Object,
+    currentUser: Object,
+    nearConfig: Object,
+    walletConnection: Object,
+  },
   components: {
     NavBar,
     HeroSrceenSection,
