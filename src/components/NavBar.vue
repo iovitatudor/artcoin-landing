@@ -97,10 +97,12 @@ export default {
       window.location.replace(window.location.origin + window.location.pathname);
     },
     async getCurrentBalance() {
-      const result = await this.contract.ft_balance_of(
-        {"account_id": this.currentUser.accountId},
-      );
-      this.artCoinBalance = result / 100000000;
+      if (this.currentUser) {
+        const result = await this.contract.ft_balance_of(
+          {"account_id": this.currentUser.accountId},
+        );
+        this.artCoinBalance = result / 100000000;
+      }
     },
   },
   created() {

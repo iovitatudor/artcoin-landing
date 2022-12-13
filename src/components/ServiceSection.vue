@@ -14,7 +14,8 @@
           :key="getService.id"
           :getService="getService"
           btn-text="Get service"
-          :contract='contract'
+          :contract="contract"
+          :currentUser="currentUser"
         />
       </v-row>
     </v-container>
@@ -29,6 +30,7 @@ export default {
   },
   props: {
     contract: Object,
+    currentUser: Object,
   },
   data: () => ({
     getServices: [
