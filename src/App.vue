@@ -7,9 +7,7 @@
     <HeroSrceenSection/>
     <HowItWorksSection/>
     <ServiceSection :contract='contract'
-                    :currentUser='currentUser'
-                    :nearConfig='nearConfig'
-                    :walletConnection='walletConnection'/>
+                    :currentUser='currentUser'/>
     <ProvideServiceSection/>
     <BusinessModelSection/>
     <PartnersSection/>
