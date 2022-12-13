@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <v-container class="bckg" fluid>
     <v-container grid-list-md class="my-16">
       <h1 class="h1 text-center mt-16 mb-5">
@@ -14,6 +14,7 @@
           :key="getService.id"
           :getService="getService"
           btn-text="Get service"
+          :contract='contract'
         />
       </v-row>
     </v-container>
@@ -25,6 +26,9 @@ import GetServiceCard from "./ui/GetServiceCard.vue";
 export default {
   components: {
     GetServiceCard,
+  },
+  props: {
+    contract: Object,
   },
   data: () => ({
     getServices: [

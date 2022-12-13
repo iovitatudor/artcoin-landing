@@ -16,7 +16,7 @@
 
           <v-btn class="btn-main" @click="login" v-if="!currentUser">Connect wallet</v-btn>
           <div class="account-section" v-else>
-            <span class="account-section-item">{{ artCoinBalance }} ArtCoin</span>
+            <span class="account-section-item">{{ artCoinBalance }} AC</span>
             <span class="account-section-item">{{ currentUser.accountId }}</span>
             <v-btn class="btn-main" @click="logout">Logout</v-btn>
           </div>
@@ -69,13 +69,6 @@ export default {
     artCoinBalance: 0,
   }),
   methods: {
-    getCurrentBalance() {
-      this.contract.ft_balance_of(
-        {"account_id": this.currentUser.accountId},
-      ).then(res => {
-        this.artCoinBalance = res
-      })
-    },
     updateWidth() {
       this.width = window.innerWidth;
       if (this.width <= 870) {
@@ -99,9 +92,15 @@ export default {
         'Near vue proto', null, null
       )
     },
-    logout() {
-      this.walletConnection.signOut();
+    async logout() {
+      await this.walletConnection.signOut();
       window.location.replace(window.location.origin + window.location.pathname);
+    },
+    async getCurrentBalance() {
+      const result = await this.contract.ft_balance_of(
+        {"account_id": this.currentUser.accountId},
+      );
+      this.artCoinBalance = result / 100000000;
     },
   },
   created() {
@@ -265,6 +264,7 @@ header {
     }
   }
 }
+
 .account-section {
   .account-section-item {
     margin: 0 20px 0 10px;

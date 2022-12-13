@@ -5,10 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:contract": "cd contract && bash build.sh && cd ../.."
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
+    "big.js": "^6.2.1",
     "core-js": "^3.6.5",
     "scss": "^0.2.4",
     "vue": "^2.6.11",

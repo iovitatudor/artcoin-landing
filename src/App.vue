@@ -6,7 +6,10 @@
             :walletConnection='walletConnection'/>
     <HeroSrceenSection/>
     <HowItWorksSection/>
-    <ServiceSection/>
+    <ServiceSection :contract='contract'
+                    :currentUser='currentUser'
+                    :nearConfig='nearConfig'
+                    :walletConnection='walletConnection'/>
     <ProvideServiceSection/>
     <BusinessModelSection/>
     <PartnersSection/>
