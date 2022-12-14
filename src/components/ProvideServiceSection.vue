@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <v-container class="bckg" fluid>
     <v-container grid-list-md class="my-16">
       <h1 class="h1 text-center mt-16 mb-5">
@@ -9,7 +9,7 @@
         order to earn ArtCoins)
       </p>
       <v-row justify="space-between" align="center">
-        <GetServiceCard
+        <ProvidedServiceCard
           v-for="provideService in provideServices"
           :key="provideService.id"
           :getService="provideService"
@@ -20,11 +20,11 @@
   </v-container>
 </template>
 <script>
-import GetServiceCard from "./ui/GetServiceCard.vue";
+import ProvidedServiceCard from "@/components/ui/ProvidedServiceCard";
 
 export default {
   components: {
-    GetServiceCard,
+    ProvidedServiceCard
   },
   data: () => ({
     provideServices: [
