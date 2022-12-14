@@ -5,7 +5,7 @@ module.exports = {
     'vuetify'
   ],
   devServer: {
-    allowedHosts: ["all"],
+    disableHostCheck: true
   },
   css: {
     loaderOptions: {
