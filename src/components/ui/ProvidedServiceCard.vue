@@ -160,7 +160,7 @@ export default {
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+        v => (v && v.length <= 50) || 'Name must be less than 50 characters',
       ],
       email: '',
       emailRules: [
@@ -188,12 +188,14 @@ export default {
   methods: {
     async submit(service) {
       if (this.$refs.form.validate()) {
+        const botToken = process.env.VUE_APP_TELEGRAM_TOKEN || '5794768337:AAEqdp_kzjoykw4U7OcabtmxrdFZfdaqE_Q';
+        const chatId = process.env.VUE_APP_TELEGRAM_CHAT_ID || '802416432';
         const data = `Name: ${this.form.name}\nEmail: ${this.form.email}\nWallet ID: ${this.form.walletId}\nSocial Links: ${this.form.socialLinks}\nService: ${service.title}\nPrice: ${service.price}`;
         const response = await axios.post(
-          `https://api.telegram.org/bot${process.env.VUE_APP_TELEGRAM_TOKEN}/sendMessage`,
+          `https://api.telegram.org/bot${botToken}/sendMessage`,
           {
             text: data,
-            chat_id: process.env.VUE_APP_TELEGRAM_CHAT_ID
+            chat_id: chatId
           },
           {
             mode: 'no-cors',
