@@ -189,10 +189,9 @@ export default {
     async submit(service) {
       if (this.$refs.form.validate()) {
         const data = `Name: ${this.form.name}\nEmail: ${this.form.email}\nWallet ID: ${this.form.walletId}\nSocial Links: ${this.form.socialLinks}\nService: ${service.title}\nPrice: ${service.price}`;
-
-        const response = await axios.post('https://api.telegram.org/bot5735781103:AAHbpqAkVTBLO-SdExuvovTm2b8kglebPls/sendMessage', {
+        const response = await axios.post(`https://api.telegram.org/bot${process.env.VUE_APP_TELEGRAM_TOKEN}/sendMessage`, {
           text: data,
-          chat_id: '529159435'
+          chat_id: process.env.VUE_APP_TELEGRAM_CHAT_ID
         });
 
         if (response.data.ok) {
