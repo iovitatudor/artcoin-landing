@@ -3,12 +3,9 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   transpileDependencies: [
     'vuetify'
-  ]
-}
-
-module.exports = {
+  ],
   devServer: {
-    allowedHosts: "all"
+    allowedHosts: ["all"],
   },
   css: {
     loaderOptions: {
@@ -16,10 +13,7 @@ module.exports = {
         additionalData: `@import "@/assets/main.scss";`
       },
     }
-  }
-}
-
-module.exports = {
+  },
   configureWebpack: {
     plugins: [
       new Dotenv()
