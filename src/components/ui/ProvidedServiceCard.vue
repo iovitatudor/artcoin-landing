@@ -59,7 +59,7 @@
                 {{ btnText }}
               </v-btn>
             </template>
-            <v-card>
+            <v-card class="restyled-popup">
               <v-card-title>
                 <span class="text-h5">Fill out the form to provide service.</span>
               </v-card-title>
@@ -77,6 +77,7 @@
                           label="Name"
                           v-model="form.name"
                           :rules="form.nameRules"
+                          outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
@@ -84,6 +85,7 @@
                           label="Email"
                           v-model="form.email"
                           :rules="form.emailRules"
+                          outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
@@ -91,6 +93,7 @@
                           label="Wallet ID"
                           v-model="form.walletId"
                           :rules="form.walletIdRules"
+                          outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
@@ -98,6 +101,7 @@
                           label="Telegram, Twitter, etc."
                           v-model="form.socialLinks"
                           :rules="form.socialLinksRules"
+                          outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" class="text-center">
@@ -108,8 +112,6 @@
                           Close
                         </v-btn>
                         <v-btn
-                          :disabled="!form.valid"
-                          color="success"
                           class="mr-4"
                           @click="submit(getService)"
                         >
@@ -300,7 +302,13 @@ export default {
   color: #7ab317;
   margin: 25px auto;
 }
+
 .text-h5 {
   margin: 0 auto;
+}
+
+.restyled-popup {
+  color: #FFF;
+  background-color: #000;
 }
 </style>
