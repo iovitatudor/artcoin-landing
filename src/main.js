@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import {initContract} from "@/near/near";
+import { initContract } from "@/near/near";
 
 Vue.config.productionTip = false
 

@@ -6,8 +6,10 @@ module.exports = {
   ]
 }
 
-
 module.exports = {
+  devServer: {
+    allowedHosts: "all"
+  },
   css: {
     loaderOptions: {
       scss: {

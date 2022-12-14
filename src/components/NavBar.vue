@@ -16,8 +16,14 @@
 
           <v-btn class="btn-main" @click="login" v-if="!currentUser">Connect wallet</v-btn>
           <div class="account-section" v-else>
-            <span class="account-section-item">{{ artCoinBalance }} AC</span>
-            <span class="account-section-item">{{ currentUser.accountId }}</span>
+            <span class="account-section-item">
+              <v-icon dark>mdi-wallet</v-icon>
+              {{ artCoinBalance }} AC
+            </span>
+            <span class="account-section-item">
+              <v-icon dark>mdi-account</v-icon>
+              {{ currentUser.accountId }}
+            </span>
             <v-btn class="btn-main" @click="logout">Logout</v-btn>
           </div>
         </div>
@@ -41,7 +47,18 @@
               <li><a to="#" class="menu-item">Roadmap</a></li>
               <li><a class="menu-item">PitchDeck</a></li>
             </ul>
-            <v-btn class="btn-main">Connect wallet</v-btn>
+            <v-btn class="btn-main" @click="login" v-if="!currentUser">Connect wallet</v-btn>
+            <div class="account-section" v-else>
+              <v-btn class="btn-main" @click="logout">Logout</v-btn>
+              <p class="account-section-item">
+                <v-icon dark>mdi-account</v-icon>
+                {{ currentUser.accountId }}
+              </p>
+              <p class="account-section-item">
+                <v-icon dark>mdi-wallet</v-icon>
+                {{ artCoinBalance }} AC
+              </p>
+            </div>
           </div>
         </transition>
       </nav>
@@ -82,14 +99,17 @@ export default {
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
     },
-    login() {
-      this.walletConnection.requestSignIn({
+    async login() {
+      localStorage.setItem('redirectToNear', 'true');
+      await this.walletConnection.requestSignIn({
           contractId: this.nearConfig.contractName,
           methodNames: [
             this.contract.ft_transfer.name,
           ]
         },
-        'Near vue proto', null, null
+        'Artcoin',
+        null,
+        null,
       )
     },
     async logout() {
@@ -272,6 +292,13 @@ header {
     margin: 0 20px 0 10px;
     display: inline-block;
     font-weight: 600;
+  }
+
+  @media screen and (max-width: 900px) {
+    .account-section-item {
+      width: 85%;
+      padding-top: 15px;
+    }
   }
 }
 </style>
