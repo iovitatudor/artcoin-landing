@@ -37,6 +37,12 @@ export default {
     nearConfig: Object,
     walletConnection: Object,
   },
+  mounted() {
+    if (localStorage.redirectToNear) {
+      localStorage.removeItem('redirectToNear');
+      location.reload();
+    }
+  },
   components: {
     NavBar,
     HeroSrceenSection,

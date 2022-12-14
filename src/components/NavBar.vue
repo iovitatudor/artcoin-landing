@@ -99,14 +99,17 @@ export default {
     toggleMobileNav() {
       this.mobileNav = !this.mobileNav;
     },
-    login() {
-      this.walletConnection.requestSignIn({
+    async login() {
+      localStorage.setItem('redirectToNear', 'true');
+      await this.walletConnection.requestSignIn({
           contractId: this.nearConfig.contractName,
           methodNames: [
             this.contract.ft_transfer.name,
           ]
         },
-        'Near vue proto', null, null
+        'Artcoin',
+        null,
+        null,
       )
     },
     async logout() {
