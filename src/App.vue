@@ -14,6 +14,7 @@
     <TeamSection/>
     <RoadmapSection/>
     <FooterSection/>
+    <CasperComponent/>
   </v-app>
 </template>
 
@@ -28,6 +29,7 @@ import PartnersSection from "./components/PartnersSection.vue";
 import TeamSection from "./components/TeamSection.vue";
 import RoadmapSection from "./components/RoadmapSection.vue";
 import FooterSection from "./components/FooterSection.vue";
+import CasperComponent from "@/components/CasperComponent";
 
 export default {
   name: "App",
@@ -54,6 +56,7 @@ export default {
     TeamSection,
     RoadmapSection,
     FooterSection,
+    CasperComponent,
   },
 };
 </script>
