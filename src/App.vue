@@ -14,7 +14,7 @@
     <TeamSection/>
     <RoadmapSection/>
     <FooterSection/>
-    <CasperComponent/>
+<!--    <CasperComponent/>-->
   </v-app>
 </template>
 
