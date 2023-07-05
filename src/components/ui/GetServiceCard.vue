@@ -1,20 +1,20 @@
 <template>
   <v-col
-    md="3"
-    sm="6"
-    offset-md="0"
-    offset-sm="3"
-    offset="2"
-    cols="8"
-    align-self="center"
+      md="3"
+      sm="6"
+      offset-md="0"
+      offset-sm="3"
+      offset="2"
+      cols="8"
+      align-self="center"
   >
     <v-card color="#DD1A33" elevation="0" class="get-service" rounded="xl">
       <div class="mt-5">
         <v-img
-          :src="imgUrl"
-          alt="service photo"
-          class="card-image rounded-xl"
-          height="303"
+            :src="imgUrl"
+            alt="service photo"
+            class="card-image rounded-xl"
+            height="303"
         />
       </div>
       <div class="glass-top">
@@ -36,8 +36,8 @@
         {{ getService.title }}
       </v-card-title>
       <v-card-text
-        v-if="getService.description"
-        class="text-center card-description pa-3"
+          v-if="getService.description"
+          class="text-center card-description pa-3"
       >
         <p v-for="(description, index) in getService.description" :key="index">
           {{ description }}
@@ -49,9 +49,13 @@
           <p class="validate-error" v-if="validatorError">
             You don't have enough funds. Top up your balance.
           </p>
-          <v-btn rounded color="white" elevation="0" class="btn my-6" @click="transfer(getService.price)">
-            {{ btnText }}
-          </v-btn>
+          <!--          <v-btn rounded color="white" elevation="0" class="btn my-6" @click="transfer(getService.price)">-->
+          <!--            {{ btnText }}-->
+          <!--          </v-btn>-->
+          <div class="artcoin-btn"
+               :price="getService.price "
+               owner="01f0d0b7dfd44d16c5d398d0d702467afa28a9a82ee31b12d69ed187654e29152b">{{ btnText }}
+          </div>
         </v-row>
       </v-card-actions>
     </v-card>
@@ -97,19 +101,19 @@ export default {
       if (!this.validatorError) {
         const BOATLOAD_OF_GAS = Big(3).times(10 ** 13).toFixed();
         await this.contract.ft_transfer(
-          {
-            "receiver_id": this.receiverAccountId,
-            "amount": (parseInt(price) * 100000000).toFixed(),
-          },
-          BOATLOAD_OF_GAS,
-          1
+            {
+              "receiver_id": this.receiverAccountId,
+              "amount": (parseInt(price) * 100000000).toFixed(),
+            },
+            BOATLOAD_OF_GAS,
+            1
         );
       }
     },
     async getCurrentBalance() {
       if (this.currentUser) {
         const result = await this.contract.ft_balance_of(
-          {"account_id": this.currentUser.accountId},
+            {"account_id": this.currentUser.accountId},
         );
         this.artCoinBalance = result / 100000000;
       }
@@ -224,5 +228,9 @@ export default {
     padding: 7px 36px;
     font-weight: 600;
   }
+}
+
+.artcoin-btn {
+  margin: 30px;
 }
 </style>

@@ -10,15 +10,16 @@
       </p>
       <v-row justify="space-between" align="center">
         <ProvidedServiceCard
-          v-for="provideService in provideServices"
-          :key="provideService.id"
-          :getService="provideService"
-          btn-text="Provide service"
+            v-for="provideService in provideServices"
+            :key="provideService.id"
+            :getService="provideService"
+            btn-text="Provide service"
         />
       </v-row>
     </v-container>
   </v-container>
 </template>
+
 <script>
 import ProvidedServiceCard from "@/components/ui/ProvidedServiceCard";
 

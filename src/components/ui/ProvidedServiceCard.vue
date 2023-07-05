@@ -1,20 +1,20 @@
 <template>
   <v-col
-    md="3"
-    sm="6"
-    offset-md="0"
-    offset-sm="3"
-    offset="2"
-    cols="8"
-    align-self="center"
+      md="3"
+      sm="6"
+      offset-md="0"
+      offset-sm="3"
+      offset="2"
+      cols="8"
+      align-self="center"
   >
     <v-card color="#DD1A33" elevation="0" class="get-service" rounded="xl">
       <div class="mt-5">
         <v-img
-          :src="imgUrl"
-          alt="service photo"
-          class="card-image rounded-xl"
-          height="303"
+            :src="imgUrl"
+            alt="service photo"
+            class="card-image rounded-xl"
+            height="303"
         />
       </div>
       <div class="glass-top">
@@ -36,28 +36,33 @@
         {{ getService.title }}
       </v-card-title>
       <v-card-text
-        v-if="getService.description"
-        class="text-center card-description pa-3"
+          v-if="getService.description"
+          class="text-center card-description pa-3"
       >
         <p v-for="(description, index) in getService.description" :key="index">
           {{ description }}
         </p>
       </v-card-text>
 
+
       <v-card-actions>
         <v-row align="center" justify="space-around" class="action-section">
           <v-dialog
-            v-model="dialog"
-            max-width="600px"
+              v-model="dialog"
+              max-width="600px"
           >
             <template v-slot:activator="{ on, attrs }">
-              <v-btn rounded color="white"
-                     elevation="0"
-                     class="btn my-6"
-                     v-bind="attrs"
-                     v-on="on">
-                {{ btnText }}
-              </v-btn>
+              <!--              <v-btn rounded color="white"-->
+              <!--                     elevation="0"-->
+              <!--                     class="btn my-6"-->
+              <!--                     v-bind="attrs"-->
+              <!--                     v-on="on">-->
+              <!--                {{ btnText }}-->
+              <!--              </v-btn>-->
+              <div class="artcoin-btn"
+                   :price="getService.price "
+                   owner="01f0d0b7dfd44d16c5d398d0d702467afa28a9a82ee31b12d69ed187654e29152b">{{ btnText }}
+              </div>
             </template>
             <v-card class="restyled-popup">
               <v-card-title>
@@ -66,54 +71,54 @@
               <v-card-text>
                 <v-container>
                   <v-form
-                    v-if="!successAlert"
-                    ref="form"
-                    v-model="form.valid"
-                    lazy-validation
+                      v-if="!successAlert"
+                      ref="form"
+                      v-model="form.valid"
+                      lazy-validation
                   >
                     <v-row>
                       <v-col cols="12">
                         <v-text-field
-                          label="Name"
-                          v-model="form.name"
-                          :rules="form.nameRules"
-                          outlined dark
+                            label="Name"
+                            v-model="form.name"
+                            :rules="form.nameRules"
+                            outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
-                          label="Email"
-                          v-model="form.email"
-                          :rules="form.emailRules"
-                          outlined dark
+                            label="Email"
+                            v-model="form.email"
+                            :rules="form.emailRules"
+                            outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
-                          label="Wallet ID"
-                          v-model="form.walletId"
-                          :rules="form.walletIdRules"
-                          outlined dark
+                            label="Wallet ID"
+                            v-model="form.walletId"
+                            :rules="form.walletIdRules"
+                            outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12">
                         <v-text-field
-                          label="Telegram, Twitter, etc."
-                          v-model="form.socialLinks"
-                          :rules="form.socialLinksRules"
-                          outlined dark
+                            label="Telegram, Twitter, etc."
+                            v-model="form.socialLinks"
+                            :rules="form.socialLinksRules"
+                            outlined dark
                         ></v-text-field>
                       </v-col>
                       <v-col cols="12" class="text-center">
                         <v-btn
-                          class="mr-4"
-                          @click="dialog = false"
+                            class="mr-4"
+                            @click="dialog = false"
                         >
                           Close
                         </v-btn>
                         <v-btn
-                          class="mr-4"
-                          @click="submit(getService)"
+                            class="mr-4"
+                            @click="submit(getService)"
                         >
                           Submit
                         </v-btn>
@@ -124,8 +129,8 @@
                     <v-col cols="12" class="text-center">
                       <p class="success-alert">Thank you, the data has been sent successfully.</p>
                       <v-btn
-                        class="mr-4"
-                        @click="dialog = false"
+                          class="mr-4"
+                          @click="dialog = false"
                       >
                         Close
                       </v-btn>
@@ -191,18 +196,18 @@ export default {
         const chatId = process.env.VUE_APP_TELEGRAM_CHAT_ID || '802416432';
         const data = `Name: ${this.form.name}\nEmail: ${this.form.email}\nWallet ID: ${this.form.walletId}\nSocial Links: ${this.form.socialLinks}\nService: ${service.title}\nPrice: ${service.price}`;
         const response = await axios.post(
-          `https://api.telegram.org/bot${botToken}/sendMessage`,
-          {
-            text: data,
-            chat_id: chatId
-          },
-          {
-            mode: 'no-cors',
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Content-Type': 'application/json',
+            `https://api.telegram.org/bot${botToken}/sendMessage`,
+            {
+              text: data,
+              chat_id: chatId
             },
-          });
+            {
+              mode: 'no-cors',
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+              },
+            });
 
         if (response.data.ok) {
           this.successAlert = true;
@@ -319,5 +324,9 @@ export default {
 .restyled-popup {
   color: #FFF;
   background-color: #000;
+}
+
+.artcoin-btn {
+  margin: 30px;
 }
 </style>
