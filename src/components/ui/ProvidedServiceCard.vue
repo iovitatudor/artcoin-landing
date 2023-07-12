@@ -59,9 +59,9 @@
               <!--                     v-on="on">-->
               <!--                {{ btnText }}-->
               <!--              </v-btn>-->
-              <div class="artcoin-btn"
-                   :price="getService.price "
-                   owner="01f0d0b7dfd44d16c5d398d0d702467afa28a9a82ee31b12d69ed187654e29152b">{{ btnText }}
+              <div class="artcoin-btn-buy-service"
+                   :price="getService.price">
+                {{ btnText }}
               </div>
             </template>
             <v-card class="restyled-popup">

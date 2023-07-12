@@ -52,7 +52,7 @@
           <!--          <v-btn rounded color="white" elevation="0" class="btn my-6" @click="transfer(getService.price)">-->
           <!--            {{ btnText }}-->
           <!--          </v-btn>-->
-          <div class="artcoin-btn"
+          <div class="artcoin-btn-sell-service"
                :price="getService.price "
                owner="01f0d0b7dfd44d16c5d398d0d702467afa28a9a82ee31b12d69ed187654e29152b">{{ btnText }}
           </div>
