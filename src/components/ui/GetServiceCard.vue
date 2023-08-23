@@ -28,7 +28,7 @@
         <p class="price ma-2">Price</p>
         <div class="glass-bottom__number mr-2">
           <IconEth class="mr-1"/>
-          <p class="price-number">{{ getService.price }} AC</p>
+          <p class="price-number">{{ getService.price }} ARTC</p>
         </div>
       </div>
 
