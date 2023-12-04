@@ -14,18 +14,19 @@
             <li><a class="menu-item">PitchDeck</a></li>
           </ul>
 
-          <v-btn class="btn-main" @click="login" v-if="!currentUser">Connect wallet</v-btn>
-          <div class="account-section" v-else>
-            <span class="account-section-item">
-              <v-icon dark>mdi-wallet</v-icon>
-              {{ artCoinBalance }} AC
-            </span>
-            <span class="account-section-item">
-              <v-icon dark>mdi-account</v-icon>
-              {{ currentUser.accountId }}
-            </span>
-            <v-btn class="btn-main" @click="logout">Logout</v-btn>
-          </div>
+<!--          <v-btn class="btn-main" @click="login" v-if="!currentUser">Connect wallet</v-btn>-->
+<!--          <div class="account-section" v-else>-->
+<!--            <span class="account-section-item">-->
+<!--              <v-icon dark>mdi-wallet</v-icon>-->
+<!--              {{ artCoinBalance }} AC-->
+<!--            </span>-->
+<!--            <span class="account-section-item">-->
+<!--              <v-icon dark>mdi-account</v-icon>-->
+<!--              {{ currentUser.accountId }}-->
+<!--            </span>-->
+<!--            <v-btn class="btn-main" @click="logout">Logout</v-btn>-->
+<!--          </div>-->
+
         </div>
 
         <div class="icon">
